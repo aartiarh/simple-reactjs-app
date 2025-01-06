@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Sync to S3
           command: |
-            aws s3 sync build //:js-aarti
+            aws s3 sync build s3://js-aarti
 
 workflows:
   build_and_deploy:
