@@ -29,18 +29,15 @@ jobs:
   # 2) S3 Push job
   s3_push:
     docker:
-      - image: circleci/node:14
+      - image: cimg/python:3.8.16
     steps:
       # Attach the workspace that was persisted in the build job
       - attach_workspace:
           at: .
-
-      # Install AWS CLI (if not already present)
+      - checkout
       - run:
           name: Install AWS CLI
-          command: |
-            sudo apt-get update && \
-            sudo apt-get install -y awscli
+          command: pip install awscli
 
       # Sync the 'build' folder to S3
       - run:
