@@ -31,10 +31,9 @@ jobs:
     docker:
       - image: cimg/python:3.8.16
     steps:
-      # Attach the workspace that was persisted in the build job
+      - checkout
       - attach_workspace:
           at: .
-      - checkout
       - run:
           name: Install AWS CLI
           command: pip install awscli
